@@ -199,7 +199,7 @@ class Content extends React.Component {
       Object.keys(layer.params).forEach(param => {
         layer.params[param] = layer.params[param][0];
         const paramData = data[layer.info.type].params[param];
-        if (layer.info.type == 'Python' || param == 'endPoint'){
+        if (layer.info.type == 'Python' && param == 'endPoint'){
           return;
         }
         if (paramData.required === true && layer.params[param] === '') {
