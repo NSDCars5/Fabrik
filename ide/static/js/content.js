@@ -724,6 +724,8 @@ class Content extends React.Component {
           class: '' 
         }
         layer.props.name = `${next.name}${this.state.nextLayerId}`;          
+        prev.connection.output.push(`l${this.state.nextLayerId}`);
+        layer.connection.input.push(`l${this.state.nextLayerId-1}`);
         this.addNewLayer(layer);
     }
 
