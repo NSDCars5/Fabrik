@@ -13,6 +13,7 @@ from keras.models import model_from_json, Sequential
 
 @csrf_exempt
 def import_json(request):
+    loadFromText = False
     if request.method == 'POST':
         if ('file' in request.FILES):
             f = request.FILES['file']
