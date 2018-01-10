@@ -24,8 +24,13 @@ def import_json(request):
                 except Exception:
                     return JsonResponse({'result': 'error',
                                          'error': 'No JSON model file found'})
+        elif 'config' in request.POST:
+            loadFromText = True
         try:
-            model = json.load(f)
+            if loadFromText is True:
+                model = json.loads(request.POST['config'])
+            else:
+                model = json.load(f)
         except Exception:
             return JsonResponse({'result': 'error', 'error': 'Invalid JSON'})
 

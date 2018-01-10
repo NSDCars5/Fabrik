@@ -443,6 +443,46 @@ input#netName.hidden {
   font-weight: bold;
 }
 
+button.import-textbox-tab {
+  line-height: 5rem;
+  border-bottom: 2px solid #ccc;
+  border-left: 1px solid #eee;
+}
+
+button.import-textbox-tab:first-child {
+  border-left: none;
+}
+
+button.import-textbox-tab.selected {
+  box-shadow: none;
+  border-bottom: 2px solid #455062;
+}
+
+.import-textbox .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+textarea.import-textbox-input {
+  width: 100%;
+  height: 40rem;
+  max-height: 80vh;
+  border: 2px solid #ccc;
+  border-top: 0;
+  outline: none;
+}
+
+button.import-textbox-button {
+  border-radius: 5px;
+  background-color: #ddd;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  line-height: 3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .setparams{
   position: absolute;
   background-color: white;

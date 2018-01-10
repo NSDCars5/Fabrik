@@ -6,7 +6,7 @@ class TopBar extends React.Component {
     return (
       <div className="topBar">
         <div className="row">
-            <div className="col-md-3">
+            <div className="col-md-2 col-md-offset-1">
               <div className="form-group">
                   <div className="dropdown">
                     <button id="topbar-icon" className="btn btn-default dropdown-toggle form-control" data-toggle="dropdown"
@@ -16,7 +16,17 @@ class TopBar extends React.Component {
                   </div>
               </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-2">
+              <div className="form-group">
+                  <div className="dropdown">
+                    <button id="topbar-icon" className="btn btn-default dropdown-toggle form-control" data-toggle="dropdown"
+                    onClick={() => this.props.textboxModal()} data-tip="Load from input">
+                      <span className="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                    </button>
+                  </div>
+              </div>
+            </div>
+            <div className="col-md-2">
               <div className="form-group">
                 <div className="dropdown">
                   <button id="topbar-icon" className="btn btn-default dropdown-toggle form-control" data-toggle="dropdown" data-tip="Export">
@@ -30,7 +40,7 @@ class TopBar extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-2">
               <div className="form-group">
                 <div className="dropdown">
                   <button id="topbar-icon" className="btn btn-default dropdown-toggle form-control" data-toggle="dropdown" data-tip="Import">
@@ -59,7 +69,7 @@ class TopBar extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-2">
               <div className="form-group">
                 <button id="topbar-icon" className="btn btn-default dropdown-toggle form-control" data-toggle="dropdown"
                 onClick={() => this.props.saveDb()} data-tip="Share">
@@ -79,7 +89,8 @@ TopBar.propTypes = {
   importNet: React.PropTypes.func,
   saveDb: React.PropTypes.func,
   loadDb: React.PropTypes.func,
-  zooModal: React.PropTypes.func
+  zooModal: React.PropTypes.func,
+  textboxModal: React.PropTypes.func
 };
 
 export default TopBar;
