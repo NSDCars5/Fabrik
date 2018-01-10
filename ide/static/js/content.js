@@ -44,7 +44,7 @@ class Content extends React.Component {
       modalIsOpen: false,
       totalParameters: 0,
       modelConfig: null,
-      modelFramework: null
+      modelFramework: 'caffe'
     };
     this.addNewLayer = this.addNewLayer.bind(this);
     this.changeSelectedLayer = this.changeSelectedLayer.bind(this);
@@ -810,7 +810,7 @@ class Content extends React.Component {
     this.setState({modelConfig});
   }
   textboxModal() {
-    this.modalHeader = 'Load Model From Text Input';
+    this.modalHeader = null;
     this.modalContent = <ImportTextbox
                           modelConfig={this.state.modelConfig}
                           modelFramework={this.state.modelFramework}

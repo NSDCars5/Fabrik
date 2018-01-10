@@ -5,8 +5,8 @@ class TopBar extends React.Component {
   render() {
     return (
       <div className="topBar">
-        <div className="row">
-            <div className="col-md-2 col-md-offset-1">
+        <div className="topbar-row">
+            <div className="topbar-col">
               <div className="form-group">
                   <div className="dropdown">
                     <button id="topbar-icon" className="btn btn-default dropdown-toggle form-control" data-toggle="dropdown"
@@ -16,7 +16,7 @@ class TopBar extends React.Component {
                   </div>
               </div>
             </div>
-            <div className="col-md-2">
+            <div className="topbar-col">
               <div className="form-group">
                   <div className="dropdown">
                     <button id="topbar-icon" className="btn btn-default dropdown-toggle form-control" data-toggle="dropdown"
@@ -26,7 +26,7 @@ class TopBar extends React.Component {
                   </div>
               </div>
             </div>
-            <div className="col-md-2">
+            <div className="topbar-col">
               <div className="form-group">
                 <div className="dropdown">
                   <button id="topbar-icon" className="btn btn-default dropdown-toggle form-control" data-toggle="dropdown" data-tip="Export">
@@ -40,7 +40,7 @@ class TopBar extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-md-2">
+            <div className="topbar-col">
               <div className="form-group">
                 <div className="dropdown">
                   <button id="topbar-icon" className="btn btn-default dropdown-toggle form-control" data-toggle="dropdown" data-tip="Import">
@@ -69,7 +69,7 @@ class TopBar extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-md-2">
+            <div className="topbar-col">
               <div className="form-group">
                 <button id="topbar-icon" className="btn btn-default dropdown-toggle form-control" data-toggle="dropdown"
                 onClick={() => this.props.saveDb()} data-tip="Share">

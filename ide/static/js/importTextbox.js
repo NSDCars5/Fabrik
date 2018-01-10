@@ -8,7 +8,7 @@ class ImportTextbox extends React.Component {
     this.importConfig = this.importConfig.bind(this);
   }
   getTabClasses(framework) {
-    let classes = 'import-textbox-tab col-md-4';
+    let classes = 'import-textbox-tab';
     if(framework === this.props.modelFramework) classes += ' selected';
     return classes;
   }
@@ -23,7 +23,8 @@ class ImportTextbox extends React.Component {
   render() {
     return (
       <div className="import-textbox">
-        <div className="row">
+        <h3>Load Model From Text Input</h3>
+        <div className="import-textbox-tabs">
           <button className={this.getTabClasses('caffe')} onClick={this.props.setModelFramework} data-framework="caffe">Caffe</button>
           <button className={this.getTabClasses('keras')} onClick={this.props.setModelFramework} data-framework="keras">Keras</button>
           <button className={this.getTabClasses('tensorflow')} onClick={this.props.setModelFramework} data-framework="tensorflow">TensorFlow</button>
