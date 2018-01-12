@@ -56,6 +56,7 @@ class Content extends React.Component {
     this.adjustParameters = this.adjustParameters.bind(this);
     this.modifyLayerParams = this.modifyLayerParams.bind(this);
     this.deleteLayer = this.deleteLayer.bind(this);
+    this.exportPrep = this.exportPrep.bind(this);
     this.exportNet = this.exportNet.bind(this);
     this.importNet = this.importNet.bind(this);
     this.changeNetStatus = this.changeNetStatus.bind(this);
@@ -290,7 +291,7 @@ class Content extends React.Component {
       }
     });
   }
-  exportNet(framework) {
+  exportPrep(callback) {
     this.dismissAllErrors();
     const error = [];
     const netObj = JSON.parse(JSON.stringify(this.state.net));
@@ -308,11 +309,14 @@ class Content extends React.Component {
         }
       });
     });
-
     if (error.length) {
       this.setState({ error });
     } else {
-      const netData = netObj;
+      callback(netObj);
+    }
+  }
+  exportNet(framework) {
+    this.exportPrep(function(netData) {
       Object.keys(netData).forEach(layerId => {
         delete netData[layerId].state;
       });
@@ -344,7 +348,7 @@ class Content extends React.Component {
           this.addError("Error");
         }.bind(this)
       });
-    }
+    }.bind(this));
   }
   importNet(framework, id) {
     this.dismissAllErrors();
@@ -691,28 +695,7 @@ class Content extends React.Component {
     this.setState({ net });
   }
   saveDb(){
-    this.dismissAllErrors();
-    const error = [];
-    const net = JSON.parse(JSON.stringify(this.state.net));
-
-    Object.keys(net).forEach(layerId => {
-      const layer = net[layerId];
-      Object.keys(layer.params).forEach(param => {
-        layer.params[param] = layer.params[param][0];
-        const paramData = data[layer.info.type].params[param];
-        if (layer.info.type == 'Python' || param == 'endPoint'){
-          return;
-        }
-        if (paramData.required === true && layer.params[param] === '') {
-          error.push(`Error: "${paramData.name}" required in "${layer.props.name}" Layer`);
-        }
-      });
-    });
-
-    if (error.length) {
-      this.setState({ error });
-    } else {
-      const netData = JSON.parse(JSON.stringify(this.state.net));
+    this.exportPrep(function(netData) {
       Object.keys(netData).forEach(layerId => {
         delete netData[layerId].state;
       });
@@ -740,7 +723,7 @@ class Content extends React.Component {
           this.setState({ load: false });
         }
       });
-    }
+    }.bind(this));
   }
   componentWillMount(){
     var url = window.location.href;
